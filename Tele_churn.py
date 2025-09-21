@@ -9,7 +9,7 @@ import joblib # Import joblib
 warnings.filterwarnings("ignore")
 
 # Load Data
-data = pd.read_csv(r"C:\Users\cereb\OneDrive\Documents\Rishabh\Rishabh\Projects\Tele_Churn\Data\Telco_Customer_Churn.csv")
+data = pd.read_csv("Data\Telco_Customer_Churn.csv")
 
 # Create a backup of the Dataframe
 data_original = data.copy()
@@ -53,4 +53,5 @@ model = GradientBoostingClassifier(n_estimators=100, random_state=42)
 model.fit(x_train, y_train)
 
 # Save the model using joblib
+
 joblib.dump(model, "tele_churn.h5")
