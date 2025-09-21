@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 try:
-    model = joblib.load("tele_churn.h5")
+    model = joblib.load("Data\tele_churn.h5")
     st.success("Model loaded successfully!")
 except FileNotFoundError:
     st.error("Error: tele_churn.h5 not found. Make sure the model file is in the correct directory.")
@@ -155,3 +155,4 @@ if st.button("Predict Churn"):
         st.success("This customer is likely to stay.")
 
         st.write(f"Probability of Staying: {prediction_proba[0][0]:.2f}")
+
