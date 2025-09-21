@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 try:
-    model = joblib.load(r"C:\Users\cereb\OneDrive\Documents\Rishabh\Rishabh\Projects\Tele_Churn\tele_churn.h5")
+    model = joblib.load("tele_churn.h5")
     st.success("Model loaded successfully!")
 except FileNotFoundError:
     st.error("Error: tele_churn.h5 not found. Make sure the model file is in the correct directory.")
@@ -25,7 +25,7 @@ except NameError:
     st.warning("Could not access processed training data from the kernel. Loading sample data to determine feature names.")
     try:
         # Load data - make sure the path is correct for your environment
-        sample_data = pd.read_csv(r"C:\Users\cereb\OneDrive\Documents\Rishabh\Rishabh\Projects\Tele_Churn\Data\Telco_Customer_Churn.csv")
+        sample_data = pd.read_csv("Data\Telco_Customer_Churn.csv")
 
         # Apply the same preprocessing steps as in the training notebook
         sample_data.TotalCharges = pd.to_numeric(sample_data.TotalCharges, errors="coerce")
@@ -153,4 +153,5 @@ if st.button("Predict Churn"):
         st.write(f"Probability of Churn: {prediction_proba[0][1]:.2f}")
     else:
         st.success("This customer is likely to stay.")
+
         st.write(f"Probability of Staying: {prediction_proba[0][0]:.2f}")
